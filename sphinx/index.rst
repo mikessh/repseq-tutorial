@@ -6,6 +6,9 @@
 Estimating the diversity of immune repertoires
 ==============================================
 
+.. figure:: _static/images/splash.png
+    :align: center
+
 This tutorial covers processing and post-analysis of 
 T-cell receptor (TCR) repertoire sequencing (RepSeq) data. 
 General strategy for such data would be to de-multiplex samples
