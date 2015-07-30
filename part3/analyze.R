@@ -2,10 +2,10 @@ require(ggplot2); require(plyr); require(reshape)
 
 df <- read.table("intersect.batch.aa!nt.txt",header=T,sep="\t",comment="")
 
-df$F <- as.numeric(as.character(df$F))
+df$F2 <- as.numeric(as.character(df$F2))
 
-df.1 <- rbind(data.frame(sample=df$X.1_sample_id, div=df$div1, overlapF=df$F, overlapD=df$div12), 
-              data.frame(sample=df$X2_sample_id, div=df$div2, overlapF=df$F, overlapD=df$div12))
+df.1 <- rbind(data.frame(sample=df$X.1_sample_id, div=df$div1, overlapF=df$F2, overlapD=df$div12), 
+              data.frame(sample=df$X2_sample_id, div=df$div2, overlapF=df$F2, overlapD=df$div12))
 
 df.2 <- ddply(df.1, .(sample), summarise,
               div=mean(div),
