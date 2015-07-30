@@ -31,5 +31,5 @@ them run:
 
 git clone https://github.com/mikessh/embo-diversity-course
 
-The datasets will be stored in ``task1/``, ``task2/`` and 
-``task3/`` folders respectively.
+The datasets will be stored in ``part1/``, ``part2/`` and 
+``part3/`` folders respectively.
