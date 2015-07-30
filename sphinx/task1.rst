@@ -1,5 +1,5 @@
-Task1: Processing RepSeq data and testing error correction techniques
----------------------------------------------------------------------
+Task1: Processing and error correction
+--------------------------------------
 
 Clone the repository with datasets, download MIGEC, MITCR and VDJtools 
 executable JAR files and place them into root folder of the repository.
@@ -11,10 +11,16 @@ Introduce aliases for running JARs
     export JAVA_OPTS="-Xmx8G" # set memory limit
     MIGEC="java -jar migec-1.2.1b.jar"
     MITCR="java -jar mitcr.jar"
-    MIGEC="java -jar vdjtools-1.2.0.jar"
+    VDJTOOLS="java -jar vdjtools-1.2.0.jar"
+    
+and change dir to the folder with datasets
 
-De-multiplexing
-^^^^^^^^^^^^^^^
+.. code-block:: bash
+
+    cd task1/
+
+De-multiplex
+^^^^^^^^^^^^
 
 The barcodes file is a tab-delimited file containing columns that 
 correspond to sample ID, left and right barcode sequnece. 
@@ -34,8 +40,8 @@ The ``checkout/`` directory will contain two pairs of FASTQ
 files for corresponding samples and a log file with info on  
 de-multiplexing efficiency.
 
-Histogram
-^^^^^^^^^
+Check UMI statistics
+^^^^^^^^^^^^^^^^^^^^
 
 Generate UMI coverage and error rate summary table
 
@@ -58,7 +64,7 @@ For plotting run the following auxiliary R script:
     some highly-amplified erroneous UMIs resulting from highly-
     covered true UMIs.
 
-Assembly
+Assemble
 ^^^^^^^^
 
 Next, assemble all reads groups having the same UMI if the 
