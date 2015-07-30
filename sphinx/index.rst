@@ -31,12 +31,14 @@ The following software tools are used for data processing and analysis:
 -  VDJtools for computing diversity estimates and rarefaction 
    analysis
    
-Those tools were developed by MiLaboratory team [REF] 
-specifically for analysis of RepSeq.
+Those tools are developed specifically for analysis of RepSeq, 
+although some modules of MIGEC can be applied to broad range of 
+UMI-tagged data.
 
-The repository [todo] contains datasets and shell scripts 
-listing all commands used in this tutorial. Some plotting 
-and statistics is done in R.
+The repository https://github.com/mikessh/repseq-tutorial 
+contains software binaries, datasets and shell scripts listing 
+all commands used in this tutorial. Some plotting and statistics 
+is done in R.
 
 
 Table of Contents
@@ -45,8 +47,7 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
    
-   datasets
-   software
+   prerequisites
    part1
    part2
    part3
