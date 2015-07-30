@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# embo-diversity-tutorial documentation build configuration file, created by
+# repseq-tutorial-embo documentation build configuration file, created by
 # sphinx-quickstart on Tue Jul 28 10:12:57 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'embo-diversity-tutorial'
+project = u'repseq-tutorial-embo'
 copyright = u'2015, Mikhail Shugay'
 author = u'Mikhail Shugay'
 
@@ -110,7 +110,7 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+html_theme = 'default'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -202,7 +202,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'embo-diversity-tutorialdoc'
+htmlhelp_basename = 'repseq-tutorial-embo'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -224,7 +224,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'embo-diversity-tutorial.tex', u'embo-diversity-tutorial Documentation',
+  (master_doc, 'repseq-tutorial-embo.tex', u'RepSeq tutorial @ EMBO practical course',
    u'Mikhail Shugay', 'manual'),
 ]
 
@@ -254,7 +254,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'embo-diversity-tutorial', u'embo-diversity-tutorial Documentation',
+    (master_doc, 'repseq-tutorial-embo', u'RepSeq tutorial @ EMBO practical course',
      [author], 1)
 ]
 
@@ -268,8 +268,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'embo-diversity-tutorial', u'embo-diversity-tutorial Documentation',
-   author, 'embo-diversity-tutorial', 'One line description of project.',
+  (master_doc, 'repseq-tutorial-embo', u'RepSeq tutorial @ EMBO practical course',,
+   author, 'repseq-tutorial-embo', 'One line description of project.',
    'Miscellaneous'),
 ]
 
