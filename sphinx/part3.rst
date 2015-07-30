@@ -96,4 +96,14 @@ with multi-dimensional scaling plots.
     evolutionary optimized repertoires, but random 
     clonal expansion (partially due to T-cell cross-reactivity) 
     decrease the overlap between our repertoires.*
+
+Expected results
+^^^^^^^^^^^^^^^^
+
+.. figure:: _static/images/part3-1.png
+    :align: center
+    :scale: 50 %
     
+.. figure:: _static/images/part3-2.png
+    :align: center
+    :scale: 50 %    

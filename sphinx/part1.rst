@@ -150,3 +150,17 @@ from different samples and compare rarefaction curves
     So replicates are not very useful to correct diversity 
     estimates.
 
+Expected results
+^^^^^^^^^^^^^^^^
+   
+.. figure:: _static/images/part1-1.png
+    :align: center
+    :scale: 50 %        
+    
+.. figure:: _static/images/part1-2.png
+    :align: center
+    :scale: 50 %        
+
+.. figure:: _static/images/part1-3.png
+    :align: center
+    :scale: 50 %        

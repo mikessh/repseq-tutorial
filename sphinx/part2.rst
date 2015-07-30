@@ -88,3 +88,10 @@ based on Spearman correlation
     We use Spearman correlation coefficient, as the distribution for 
     some measures like lower bound total diversity estimates is highly 
     skewed.
+
+Expected results
+^^^^^^^^^^^^^^^^
+   
+.. figure:: _static/images/part2-1.png
+    :align: center
+    :scale: 50 %        
