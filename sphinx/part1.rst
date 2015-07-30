@@ -1,10 +1,8 @@
-Part1: Processing and error correction
+Part I: Processing and error correction
 --------------------------------------
 
-Clone the repository with datasets, download MIGEC, MITCR and VDJtools 
-executable JAR files and place them into root folder of the repository.
-
-Introduce aliases for running JARs
+Clone the repository with datasets, MIGEC, MITCR and VDJtools 
+executable JAR files and introduce aliases for running those JARs
 
 .. code-block:: bash
 
@@ -13,7 +11,7 @@ Introduce aliases for running JARs
     MITCR="java -jar ../mitcr.jar"
     VDJTOOLS="java -jar ../vdjtools-1.0.2.jar"
     
-and change dir to the folder with datasets
+change dir to the folder with datasets
 
 .. code-block:: bash
 

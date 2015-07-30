@@ -1,5 +1,5 @@
-Task2: Comparing diversity estimates
-------------------------------------
+Part II: Comparing diversity estimates
+--------------------------------------
 
 Datasets to be analyzed in this section can be found 
 in ``task2/`` folder. There are 39 preprocessed clonotype 
@@ -78,10 +78,10 @@ based on Spearman correlation
       theme_bw()+theme(legend.position="none")
     dev.off()
     
-.. note::
+.. important::
     
     Headers in VDJtools output are marked with **#**, so we need to specify ``comment=""`` 
-    when loading a data table.
+    when loading the data table in R.
      
 .. note:: 
 
