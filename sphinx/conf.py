@@ -268,7 +268,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'repseq-tutorial-embo', u'RepSeq tutorial @ EMBO practical course',,
+  (master_doc, 'repseq-tutorial-embo', u'RepSeq tutorial @ EMBO practical course',
    author, 'repseq-tutorial-embo', 'One line description of project.',
    'Miscellaneous'),
 ]
