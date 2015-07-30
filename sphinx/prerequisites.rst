@@ -29,7 +29,7 @@ Software
 All software tools necessary for this tutorial are stored in the 
 ``repseq-tutorial`` repository as well.
 
-.. important::
+.. warning::
 
     Java v1.8+ is required to run these tools.
 

@@ -78,7 +78,7 @@ based on Spearman correlation
       theme_bw()+theme(legend.position="none")
     dev.off()
     
-.. important::
+.. warning::
     
     Headers in VDJtools output are marked with **#**, so we need to specify ``comment=""`` 
     when loading the data table in R.
