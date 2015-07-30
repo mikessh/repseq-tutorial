@@ -3,7 +3,7 @@ require(ggplot2)
 df.e <- read.table("diversity.strict.exact.txt", header=T, comment="", sep="\t")
 df.r <- read.table("diversity.strict.resampled.txt", header=T, comment="", sep="\t")
 
-measures <- c("observedDiversity", "chaoE", "efronThisted", "chao1", "d50Index", "shannonWeinerIndex", "inverseSimpsonIndex")
+measures <- c("observedDiversity", "chaoE", "efronThisted", "chao1", "d50Index", "shannonWienerIndex", "inverseSimpsonIndex")
 methods <- c("exact", "resampled")
 
 g <- as.data.frame(expand.grid(measures, methods))

@@ -1,2 +1,2 @@
-java -Xmx8G -jar ../vdjtools-1.2.0.jar $VDJTOOLS CalcDiversityStats -m metadata.txt .
+java -Xmx8G -jar ../vdjtools-1.0.2.jar $VDJTOOLS CalcDiversityStats -m metadata.txt .
 Rscript plot.R
