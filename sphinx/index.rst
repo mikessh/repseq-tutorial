@@ -47,6 +47,6 @@ Table of Contents
    
    datasets
    software
-   task1
-   task2
-   task3
+   part1
+   part2
+   part3

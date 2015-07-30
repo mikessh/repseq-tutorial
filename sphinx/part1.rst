@@ -1,4 +1,4 @@
-Task1: Processing and error correction
+Part1: Processing and error correction
 --------------------------------------
 
 Clone the repository with datasets, download MIGEC, MITCR and VDJtools 
@@ -9,15 +9,15 @@ Introduce aliases for running JARs
 .. code-block:: bash
 
     export JAVA_OPTS="-Xmx8G" # set memory limit
-    MIGEC="java -jar migec-1.2.1b.jar"
-    MITCR="java -jar mitcr.jar"
-    VDJTOOLS="java -jar vdjtools-1.2.0.jar"
+    MIGEC="java -jar ../migec-1.2.1b.jar"
+    MITCR="java -jar ../mitcr.jar"
+    VDJTOOLS="java -jar ../vdjtools-1.0.2.jar"
     
 and change dir to the folder with datasets
 
 .. code-block:: bash
 
-    cd task1/
+    cd part1/
 
 De-multiplex
 ^^^^^^^^^^^^
@@ -31,7 +31,7 @@ can run de-multiplexing as follows:
 
 .. code-block:: bash
 
-    $MIGEC Checkout -u tcr_R1.fastq.gz tcr_R2.fastq.gz checkout/
+    $MIGEC Checkout -ou barcodes.txt trb_R1.fastq.gz trb_R2.fastq.gz checkout/
 
 Here ``-u`` option tells to extract UMI sequences marked with 
 capital ``N`` in the barcodes file.
@@ -56,6 +56,7 @@ For plotting run the following auxiliary R script:
     cd histogram/
     wget https://raw.githubusercontent.com/mikessh/migec/master/util/histogram.R
     Rscript histogram.R
+    cd ..
 
 .. note::
     Manual inspection reveals that there is good coverage peak 
@@ -73,7 +74,7 @@ with ``--filter-collisions``.
 
 .. code-block:: bash
 
-    $MIGEC AssembleBatch -m 5 --filter-collisions checkout/ histogram/ assemble/
+    $MIGEC AssembleBatch --force-overseq 5 --force-collision-filter checkout/ histogram/ assemble/
 
 The ``assemble/`` folder now contains FASTQ files with assembled consensuses
 
@@ -87,17 +88,14 @@ and correct erroneous ones using various techniques.
 
     # different quality thresholds
     for q in 20 25 30 35; do 
-       $MIGEC CdrBlast -R TRB -q $q checkout/S2-1-beta_R2.fastq.gz cdrblast/S2-1-beta.raw$q.txt
+       $MIGEC CdrBlast -R TRB -q $q checkout/S2-1-beta_R2.fastq cdrblast/S2-1-beta.raw$q.txt
     done
-    
     # second sample, Q35, for replica-based filtering
-    $MIGEC CdrBlast -R TRB -q 35 checkout/S2-1-beta_R2.fastq.gz cdrblast/S2-2-beta.raw35.txt
-    
-    # frequency-based error correction
-    $MITCR -pset flex checkout/S2-1-beta_R2.fastq.gz cdrblast/S2-1-beta.mitcr.txt
-    
+    $MIGEC CdrBlast -R TRB -q 35 checkout/S2-2-beta_R2.fastq cdrblast/S2-2-beta.raw35.txt
+    # frequency-based error correction (mitcr)
+    $MITCR -pset flex checkout/S2-1-beta_R2.fastq cdrblast/S2-1-beta.mitcr.txt
     # assembled data
-    $MIGEC CdrBlast -a -R TRB assemble/S2-1-beta_R2.t5.cf.fastq.gz cdrblast/S2-1-beta.asm.txt
+    $MIGEC CdrBlast -a -R TRB assemble/S2-1-beta_R2.t5.cf.fastq cdrblast/S2-1-beta.asm.txt
     
 This will generate generate clonotype tables for further analysis.
 
@@ -118,15 +116,15 @@ First, convert samples into VDJtools input format
 
     $VDJTOOLS Convert -S migec `ls cdrblast/S2-*-beta.raw*.txt` cdrblast/S2-1-beta.asm.txt convert/
     $VDJTOOLS Convert -S mitcr cdrblast/S2-1-beta.mitcr.txt convert/
-
+    
 Then compare rarefaction curves for quality-based filtering, frequency-based filtering 
 and UMI-based assembly
 
 .. code-block:: bash
 
-    $VDJTOOLS RarefactionPlot `ls convert/S2-1-beta.raw*.txt` convert/S2-1-beta.mitcr.txt rarefaction/qual-and-freq
+    $VDJTOOLS RarefactionPlot -f sample_id `ls convert/S2-1-beta.raw*.txt` convert/S2-1-beta.mitcr.txt rarefaction/qual-and-freq
     # plot curve for assembled data separately, as it uses #UMIs as count, not reads
-    $VDJTOOLS RarefactionPlot convert/S2-1-beta.asm.txt rarefaction/umi
+    $VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.asm.txt rarefaction/umi
 
 Inspect pdf files in ``rarefaction/`` folder.
 
@@ -145,8 +143,8 @@ from different samples and compare rarefaction curves
 
 .. code-block:: bash
 
-    $VDJTOOLS OverlapPair convert/S2-1-beta.raw35.txt convert/S2-2-beta.raw35.txt convert/
-    $VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.raw35.txt convert/S2-2-beta.raw35.txt convert/paired.strict.table.txt rarefaction/overlap
+   $VDJTOOLS OverlapPair convert/S2-1-beta.raw35.txt convert/S2-2-beta.raw35.txt convert/
+   $VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.raw35.txt convert/S2-2-beta.raw35.txt convert/paired.strict.table.txt rarefaction/overlap
 
 .. note::
     There is still a substantial level of artificial diversity, 
