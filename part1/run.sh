@@ -26,16 +26,17 @@ $MIGEC CdrBlast -R TRB -q 35 checkout/S2-2-beta_R2.fastq cdrblast/S2-2-beta.raw3
 $MITCR -pset flex checkout/S2-1-beta_R2.fastq cdrblast/S2-1-beta.mitcr.txt
 # assembled data
 $MIGEC CdrBlast -a -R TRB assemble/S2-1-beta_R2.t5.cf.fastq cdrblast/S2-1-beta.asm.txt
+$MIGEC CdrBlast -a -R TRB assemble/S2-2-beta_R2.t5.cf.fastq cdrblast/S2-2-beta.asm.txt
 
 
 ## vdjtools
 # convert
-$VDJTOOLS Convert -S migec `ls cdrblast/S2-*-beta.raw*.txt` cdrblast/S2-1-beta.asm.txt convert/
+$VDJTOOLS Convert -S migec `ls cdrblast/S2-*-beta.raw*.txt` `ls cdrblast/S2-*-beta.asm.txt` convert/
 $VDJTOOLS Convert -S mitcr cdrblast/S2-1-beta.mitcr.txt convert/
 # all rarefaction curves
 $VDJTOOLS RarefactionPlot -f sample_id `ls convert/S2-1-beta.raw*.txt` convert/S2-1-beta.mitcr.txt rarefaction/qual-and-freq
 # plot curve for assembled data separately, as it uses #UMIs as count, not reads
-$VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.asm.txt rarefaction/umi
+$VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.asm.txt convert/S2-2-beta.asm.txt rarefaction/umi
 # overlapped replicas
 $VDJTOOLS OverlapPair convert/S2-1-beta.raw35.txt convert/S2-2-beta.raw35.txt convert/
 $VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.raw35.txt convert/S2-2-beta.raw35.txt convert/paired.strict.table.txt rarefaction/overlap

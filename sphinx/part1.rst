@@ -94,6 +94,7 @@ and correct erroneous ones using various techniques.
     $MITCR -pset flex checkout/S2-1-beta_R2.fastq cdrblast/S2-1-beta.mitcr.txt
     # assembled data
     $MIGEC CdrBlast -a -R TRB assemble/S2-1-beta_R2.t5.cf.fastq cdrblast/S2-1-beta.asm.txt
+    $MIGEC CdrBlast -a -R TRB assemble/S2-2-beta_R2.t5.cf.fastq cdrblast/S2-2-beta.asm.txt
     
 This will generate generate clonotype tables for further analysis.
 
@@ -112,7 +113,7 @@ First, convert samples into VDJtools input format
 
 .. code-block:: bash
 
-    $VDJTOOLS Convert -S migec `ls cdrblast/S2-*-beta.raw*.txt` cdrblast/S2-1-beta.asm.txt convert/
+    $VDJTOOLS Convert -S migec `ls cdrblast/S2-*-beta.raw*.txt` `ls cdrblast/S2-*-beta.asm.txt` convert/
     $VDJTOOLS Convert -S mitcr cdrblast/S2-1-beta.mitcr.txt convert/
     
 Then compare rarefaction curves for quality-based filtering, frequency-based filtering 
@@ -122,7 +123,7 @@ and UMI-based assembly
 
     $VDJTOOLS RarefactionPlot -f sample_id `ls convert/S2-1-beta.raw*.txt` convert/S2-1-beta.mitcr.txt rarefaction/qual-and-freq
     # plot curve for assembled data separately, as it uses #UMIs as count, not reads
-    $VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.asm.txt rarefaction/umi
+    $VDJTOOLS RarefactionPlot -f sample_id convert/S2-1-beta.asm.txt convert/S2-2-beta.asm.txt rarefaction/umi
 
 Inspect pdf files in ``rarefaction/`` folder.
 
