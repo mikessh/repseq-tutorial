@@ -23,7 +23,7 @@ Next we will compute pairwise similarities
 
 .. code-block:: bash
 
-    $VDJTOOLS ../vdjtools-1.0.2.jar CalcPairwiseDistances -i aa\!nt -m metadata.txt .
+    $VDJTOOLS CalcPairwiseDistances -i aa\!nt -m metadata.txt .
 
 .. important::
 
