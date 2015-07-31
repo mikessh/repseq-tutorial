@@ -79,7 +79,7 @@ Next, lets cluster samples based on their similarity,
     
 .. code-block:: bash
 
-    $VDJTOOLS ../vdjtools-1.0.2.jar ClusterSamples -m F2 -i aa\!nt -f age -n -p .
+    $VDJTOOLS ClusterSamples -e F2 -i aa\!nt -f age -n -p .
     
 This will generate ``hc*.pdf`` with hierarchical clustering and ``mds*.pdf``
 with multi-dimensional scaling plots.
