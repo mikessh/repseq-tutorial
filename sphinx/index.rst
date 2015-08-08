@@ -39,14 +39,14 @@ Those tools are developed specifically for analysis of RepSeq,
 although some modules of MIGEC can be applied to broad range of 
 UMI-tagged data.
 
-The repository https://github.com/mikessh/repseq-tutorial 
+The `repseq-tutorial <https://github.com/mikessh/repseq-tutorial>`__repository 
 contains software binaries, datasets and shell scripts listing 
 all commands used in this tutorial. Some plotting and statistics 
 is done in R.
 
 .. note::
 
-   Some additional introduction slides can be accessed `here <_static/short_intro.pdf`.
+   Some additional introduction slides can be accessed `here <_static/short_intro.pdf>`__.
 
 
 Table of Contents

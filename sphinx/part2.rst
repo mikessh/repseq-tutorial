@@ -13,7 +13,7 @@ Estimating diversity
 
 Corresponding routine of VDJtools framework is called CalcDiversityStats. The list of 
 diversity estimates that can be computed using this
-routine is given here http://vdjtools-doc.readthedocs.org/en/latest/diversity.html#calcdiversitystats
+routine is given `here <http://vdjtools-doc.readthedocs.org/en/latest/diversity.html#calcdiversitystats>`__
 
 .. code-block:: bash
 
