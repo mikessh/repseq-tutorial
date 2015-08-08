@@ -68,18 +68,22 @@ Assemble
 
 Next, assemble all reads groups having the same UMI if the 
 group count is 5+ reads ``-m 5`` and filter erroneous UMIs 
-with ``--filter-collisions``.
+with ``--filter-collisions``. The ``--default-mask 0:1`` option 
+tells to only assemble second read which is the one containing 
+CDR3 in current library prep setting (note that reads are oriented with 
+Checkout routine).
 
 .. code-block:: bash
 
-    $MIGEC AssembleBatch --force-overseq 5 --force-collision-filter checkout/ histogram/ assemble/
+    $MIGEC AssembleBatch --force-overseq 5 --force-collision-filter --default-mask 0:1 checkout/ histogram/ assemble/
 
-The ``assemble/`` folder now contains FASTQ files with assembled consensuses
+The ``assemble/`` folder now contains FASTQ files with assembled consensuses.
 
 V-(D)-J mapping
 ^^^^^^^^^^^^^^^
 
-Map V, D and J segments, extract CDR3 sequences, assemble clonotypes 
+The following code runs MIGEC/CdrBlast and MITCR software to map 
+V, D and J segments, extract CDR3 sequences, assemble clonotypes 
 and correct erroneous ones using various techniques.
 
 .. code-block:: bash
@@ -96,18 +100,53 @@ and correct erroneous ones using various techniques.
     $MIGEC CdrBlast -a -R TRB assemble/S2-1-beta_R2.t5.cf.fastq cdrblast/S2-1-beta.asm.txt
     $MIGEC CdrBlast -a -R TRB assemble/S2-2-beta_R2.t5.cf.fastq cdrblast/S2-2-beta.asm.txt
     
-This will generate generate clonotype tables for further analysis.
+The results are provided as tab-delimited clonotype abundance tables.
 
-Inspect the data
-^^^^^^^^^^^^^^^^
+Having a glance the data
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Upload clonotype table(s) from ``cdrblast/`` folder to vdjviz.milaboratory.com, 
 browse the clonotype tables, check for erroneous clonotypes by 
 performing a search for CDR3 amino acid sequence matching one of the 
 top clonotypes.
 
-Repertoire diversity
-^^^^^^^^^^^^^^^^^^^^
+Final steps and report generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+MIGEC pipeline aims at running all steps from de-multiplexing to 
+clonotype assembly and error correction for a batch of samples.
+
+To continue with *batch* MIGEC analysis, run 
+
+.. code-block:: bash
+
+   # Process both raw and assembled data
+   $MIGEC CdrBlastBatch -R TRB checkout/ assemble/ cdrblast/
+   # Filter results from hot-spot PCR errors
+   $MIGEC FilterCdrBlastResultsBatch cdrblast/ cdrfinal/
+   
+The ``cdrfinal/`` folder will contain filtered clonotype abundance tables. 
+Once all stages of *batch* MIGEC are complete, one can generate analysis report 
+with the following command:
+
+.. code-block:: bash
+
+   $MIGEC Report .
+   
+Generated report will contain comprehensive statistics for all five stages of MIGEC analysis.
+
+.. note::
+
+   Report generation uses `R markdown <http://rmarkdown.rstudio.com/>`__ and 
+   parsing it to HTML requires installation of additional libraries. One can either 
+   follow instructions on R markdown web page or install `RStudio <https://www.rstudio.com/>`__ 
+   that will in turn install all necessary packages. 
+   If the report generation is unsuccessful, one can still use RStudio to 
+   compile the report template (``*.Rmd`` file that will be generated anyway) by 
+   opening it and clicking "knit html" button.
+   
+Repertoire diversity analysis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 First, convert samples into VDJtools input format
 
@@ -116,7 +155,7 @@ First, convert samples into VDJtools input format
     $VDJTOOLS Convert -S migec `ls cdrblast/S2-*-beta.raw*.txt` `ls cdrblast/S2-*-beta.asm.txt` convert/
     $VDJTOOLS Convert -S mitcr cdrblast/S2-1-beta.mitcr.txt convert/
     
-Then compare rarefaction curves for quality-based filtering, frequency-based filtering 
+Next, compare rarefaction curves for quality-based filtering, frequency-based filtering 
 and UMI-based assembly
 
 .. code-block:: bash
@@ -153,6 +192,11 @@ from different samples and compare rarefaction curves
 
 Expected results
 ^^^^^^^^^^^^^^^^
+
+.. figure:: _static/images/part1-0.png
+    :align: center
+    :scale: 50 %        
+    :target: _static/examples/migec_summary.html
    
 .. figure:: _static/images/part1-1.png
     :align: center
@@ -164,4 +208,4 @@ Expected results
 
 .. figure:: _static/images/part1-3.png
     :align: center
-    :scale: 50 %        
+    :scale: 50 %            

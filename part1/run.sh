@@ -13,7 +13,7 @@ wget https://raw.githubusercontent.com/mikessh/migec/master/util/histogram.R
 Rscript histogram.R
 cd ..
 # assemble
-$MIGEC AssembleBatch --force-overseq 5 --force-collision-filter checkout/ histogram/ assemble/
+$MIGEC AssembleBatch --force-overseq 5 --force-collision-filter --default-mask 0:1 checkout/ histogram/ assemble/
 
 # cdrblast    
 # different quality thresholds
@@ -28,6 +28,13 @@ $MITCR -pset flex checkout/S2-1-beta_R2.fastq cdrblast/S2-1-beta.mitcr.txt
 $MIGEC CdrBlast -a -R TRB assemble/S2-1-beta_R2.t5.cf.fastq cdrblast/S2-1-beta.asm.txt
 $MIGEC CdrBlast -a -R TRB assemble/S2-2-beta_R2.t5.cf.fastq cdrblast/S2-2-beta.asm.txt
 
+## finalize
+# process both raw and assembled data
+$MIGEC CdrBlastBatch -R TRB checkout/ assemble/ cdrblast/
+# filter results from hot-spot PCR errors
+$MIGEC FilterCdrBlastResultsBatch cdrblast/ cdrfinal/
+# generate report
+$MIGEC Report .
 
 ## vdjtools
 # convert

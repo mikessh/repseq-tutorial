@@ -85,7 +85,7 @@ modules.
     in R shell.
     
     Alternatively, one can run ``java -jar vdjtools-1.0.2.jar RInstall`` 
-    to allow VDJtools intall all R packages it uses (will a substantial amount of time).
+    to allow VDJtools intall all R packages it uses (will take a substantial amount of time).
     
     The list of required packages:
     
