@@ -8,6 +8,7 @@ Estimating the diversity of immune repertoires
 
 .. figure:: _static/images/splash.png
     :align: center
+    :target: http://events.embo.org/15-htp-sequencing/
 
 This tutorial covers processing and post-analysis of 
 T-cell receptor (TCR) repertoire sequencing (RepSeq) data. 
