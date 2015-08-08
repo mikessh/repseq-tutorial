@@ -1,5 +1,5 @@
-Part II: Comparing diversity estimates
---------------------------------------
+Part II: Comparing diversity estimation methods
+-----------------------------------------------
 
 Datasets to be analyzed in this section can be found 
 in ``task2/`` folder. There are 39 preprocessed clonotype 

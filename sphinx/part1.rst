@@ -1,5 +1,5 @@
-Part I: Processing and error correction
---------------------------------------
+Part I: Processing, error correction and diversity estimation
+-------------------------------------------------------------
 
 Clone the repository with datasets, MIGEC, MITCR and VDJtools 
 executable JAR files and introduce aliases for running those JARs
