@@ -44,6 +44,10 @@ contains software binaries, datasets and shell scripts listing
 all commands used in this tutorial. Some plotting and statistics 
 is done in R.
 
+.. note::
+
+   Some additional introduction slides can be accessed `here <_static/short_intro.pdf`.
+
 
 Table of Contents
 -----------------
