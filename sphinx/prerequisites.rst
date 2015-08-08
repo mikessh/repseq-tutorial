@@ -79,7 +79,18 @@ modules.
 
 .. important:: 
 
-    As VDJtools performs some plotting via R, it can throw an 
+    As VDJtools performs some plotting via R, so it can throw an 
     error that a specific R package is lacking. Those packages 
     should be installed with ``install.packages`` command 
     in R shell.
+    
+    Alternatively, one can run ``java -jar vdjtools-1.0.2.jar RInstall`` 
+    to allow VDJtools intall all R packages it uses (will a substantial amount of time).
+    
+    The list of required packages:
+    
+    :: 
+    
+       reshape, ggplot2, gridExtra, FField,
+       ape, reshape2, MASS, plotrix, RColorBrewer,
+       scales
