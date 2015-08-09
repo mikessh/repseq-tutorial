@@ -102,8 +102,8 @@ and correct erroneous ones using various techniques.
     
 The results are provided as tab-delimited clonotype abundance tables.
 
-Having a glance the data
-^^^^^^^^^^^^^^^^^^^^^^^^
+Take a glance at the data
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Upload clonotype table(s) from ``cdrblast/`` folder to vdjviz.milaboratory.com, 
 browse the clonotype tables, check for erroneous clonotypes by 
